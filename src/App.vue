@@ -24,26 +24,30 @@
     </div>
 
     <div class="lg:grid grid-cols-3 gap-4 my-4">
-      <MovieItem
-        v-for="(movie, movieIndex) in movies"
-        :key="`${movieIndex}-${movie.name}`"
-        :movie="movie"
-        @edit="startMovieEdit(movieIndex, movie)"
-        @remove="movies.splice(movieIndex, 1)"
-        @update:rating="updateRating(movieIndex, $event)"
-      />
+      <transition-group name="fade">
+        <MovieItem
+          v-for="(movie, movieIndex) in movies"
+          :key="`${movieIndex}-${movie.name}`"
+          :movie="movie"
+          @edit="startMovieEdit(movieIndex, movie)"
+          @remove="movies.splice(movieIndex, 1)"
+          @update:rating="updateRating(movieIndex, $event)"
+        />
+      </transition-group>
     </div>
   </div>
 
-  <AppModal v-if="showAddMovieModal" @close="closeAddMovieModal">
-    <AddNewMovieForm
-      :id="movies.length + 1"
-      :editingMovie="editingMovie"
-      @add-movie="addNewMovie"
-      @update-movie="updateMovie"
-      @close="closeAddMovieModal"
-    />
-  </AppModal>
+  <transition name="fade">
+    <AppModal v-if="showAddMovieModal" @close="closeAddMovieModal">
+      <AddNewMovieForm
+        :id="movies.length + 1"
+        :editingMovie="editingMovie"
+        @add-movie="addNewMovie"
+        @update-movie="updateMovie"
+        @close="closeAddMovieModal"
+      />
+    </AppModal>
+  </transition>
 </template>
 
 <script setup>
