@@ -117,6 +117,11 @@ const formTitle = computed(() =>
   isEditing.value ? "Edit Movie" : "Add New Movie"
 );
 
+const formIsFilled = computed(() => {
+  const { name, description, image, genres } = movie.value;
+  return !!name && !!description && !!image && genres.length > 0;
+});
+
 function isSelectedGenre(genre: string) {
   return movie.value.genres.includes(genre);
 }
@@ -136,6 +141,8 @@ function removeGenre(genre: string) {
 }
 
 function handleFormSubmission() {
+  if (!formIsFilled.value) return;
+
   if (isEditing.value) {
     emit("update-movie", movie.value);
   } else emit("add-movie", movie.value);
