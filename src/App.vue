@@ -37,17 +37,15 @@
     </div>
   </div>
 
-  <transition name="fade">
-    <AppModal v-if="showAddMovieModal" @close="closeAddMovieModal">
-      <AddNewMovieForm
-        :id="movies.length + 1"
-        :editingMovie="editingMovie"
-        @add-movie="addNewMovie"
-        @update-movie="updateMovie"
-        @close="closeAddMovieModal"
-      />
-    </AppModal>
-  </transition>
+  <AppModal :show="showAddMovieModal" @close="closeAddMovieModal">
+    <AddNewMovieForm
+      :id="movies.length + 1"
+      :editingMovie="editingMovie"
+      @add-movie="addNewMovie"
+      @update-movie="updateMovie"
+      @close="closeAddMovieModal"
+    />
+  </AppModal>
 </template>
 
 <script setup>

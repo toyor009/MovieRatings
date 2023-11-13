@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Transitions */
+
+/* Fade */
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
@@ -10,4 +14,10 @@
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
+}
+
+.slide-down-enter-from,
+.slide-down-leave-to {
+  opacity: 0;
+  transition: translateY(-50px);
 }
