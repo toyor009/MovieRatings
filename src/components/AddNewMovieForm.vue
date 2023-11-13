@@ -10,6 +10,7 @@
           id="name"
           type="text"
           class="nm-input"
+          ref="nameInput"
           v-model="movie.name"
         />
       </div>
@@ -74,7 +75,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, PropType, computed } from "vue";
+import { ref, PropType, computed, onMounted } from "vue";
+
 import { Movie } from "../types";
 
 defineOptions({
@@ -108,6 +110,8 @@ const movie = ref({
   ...defaultMovie,
   id: props.id,
 });
+
+const nameInput = ref(null);
 
 const genres = ["Comedy", "Action", "Crime", "Drama", "Thriller"];
 
@@ -158,6 +162,10 @@ function closeForm() {
   emit("close");
 }
 
+onMounted(() => {
+  nameInput.value.focus();
+});
+
 movie.value = isEditing.value
   ? { ...props.editingMovie }
   : {
@@ -168,7 +176,7 @@ movie.value = isEditing.value
 
 <style lang="scss" scoped>
 .nm-input {
-  @apply mb-4 bg-[#0C131F] text-white rounded w-full;
+  @apply mb-4 bg-[#0C131F] text-white rounded w-full px-2;
   border: 1px solid #2e383a;
 
   &[type="text"] {
