@@ -1,6 +1,6 @@
 <template>
   <div class="bg-[#19252A] w-[500px] p-4">
-    <h3 class="text-white font-bold mb-5">Add New Movie</h3>
+    <h3 class="text-white font-bold mb-5">{{ formTitle }}</h3>
 
     <form>
       <div>
@@ -112,6 +112,10 @@ const movie = ref({
 const genres = ["Comedy", "Action", "Crime", "Drama", "Thriller"];
 
 const isEditing = computed(() => !!props.editingMovie?.name);
+
+const formTitle = computed(() =>
+  isEditing.value ? "Edit Movie" : "Add New Movie"
+);
 
 function isSelectedGenre(genre: string) {
   return movie.value.genres.includes(genre);
