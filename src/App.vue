@@ -35,7 +35,7 @@
     </div>
   </div>
 
-  <Overlay v-if="showAddMovieModal" @close="closeAddMovieModal">
+  <AppModal v-if="showAddMovieModal" @close="closeAddMovieModal">
     <AddNewMovieForm
       :id="movies.length + 1"
       :editingMovie="editingMovie"
@@ -43,7 +43,7 @@
       @update-movie="updateMovie"
       @close="closeAddMovieModal"
     />
-  </Overlay>
+  </AppModal>
 </template>
 
 <script setup>
@@ -51,7 +51,7 @@ import { computed, ref } from "vue";
 
 import { movieItems } from "./movies.json";
 
-import Overlay from "./components/Overlay.vue";
+import AppModal from "./components/AppModal.vue";
 import AddNewMovieForm from "./components/AddNewMovieForm.vue";
 import MovieItem from "./components/MovieItem.vue";
 

@@ -7,7 +7,7 @@
     <div class="relative">
       <!-- Star -->
       <StarIcon class="absolute right-1 w-11 h-11 text-yellow-500" />
-      <h1 class="absolute top-3 right-[23px] text-red-950">
+      <h1 class="absolute top-3 right-[23px] text-red-950 font-bold">
         {{ movie.rating || "-" }}
       </h1>
     </div>
