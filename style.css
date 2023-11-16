@@ -15,9 +15,3 @@
 .fade-leave-active {
   transition: opacity 0.5s ease;
 }
-
-.slide-down-enter-from,
-.slide-down-leave-to {
-  opacity: 0;
-  transition: translateY(-50px);
-}

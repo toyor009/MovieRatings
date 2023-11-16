@@ -77,6 +77,14 @@
               @click="emit('remove')"
             />
           </span>
+
+          <!-- View Details -->
+          <span title="View movie">
+            <EyeIcon
+              class="w-[21px] h-[19px] cursor-pointer hover:text-blue-500"
+              @click="emit('view-details', movie.id)"
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -86,7 +94,12 @@
 <script setup lang="ts">
 import { ref, PropType } from "vue";
 
-import { StarIcon, PencilIcon, TrashIcon } from "@heroicons/vue/24/solid";
+import {
+  StarIcon,
+  PencilIcon,
+  TrashIcon,
+  EyeIcon,
+} from "@heroicons/vue/24/solid";
 
 import { Movie } from "../types";
 
@@ -98,7 +111,7 @@ const props = defineProps<{
   movie: Movie;
 }>();
 
-const emit = defineEmits(["edit", "remove", "update:rating"]);
+const emit = defineEmits(["edit", "remove", "update:rating", "view-details"]);
 
 const activeMovieIndex = ref("");
 </script>
