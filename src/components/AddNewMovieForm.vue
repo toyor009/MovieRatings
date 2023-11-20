@@ -167,7 +167,7 @@ onMounted(() => {
 });
 
 movie.value = isEditing.value
-  ? { ...props.editingMovie }
+  ? { ...props.editingMovie, genres: [...props.editingMovie.genres] }
   : {
       ...defaultMovie,
       id: props.id,
